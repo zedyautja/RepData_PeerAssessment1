@@ -19,31 +19,15 @@ Set the working directory then download and import the data from the .csv file.
 
 ```r
 library(knitr)
-#knitr::opts_chunk$set(cache=FALSE)
-
 setwd("~/GitHub/Repro/RepData_PeerAssessment1")
-# fileurl is here
+
 fileurl <- "http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
-
-# create a temporary directory
 temp = tempdir()
-
-# create the placeholder ready to receive
 acttemp = tempfile(tmpdir=temp, fileext=".zip")
-
-# download into the placeholder
 download.file(fileurl, acttemp, mode="wb")
-
-# get the name of the first file in the zip archive
 activity = unzip(acttemp, list=TRUE)$Name[1]
-
-# unzip the file to the temporary directory
 unzip(acttemp, files=activity, exdir=temp, overwrite=TRUE)
-
-# fpath is the full path to the extracted file
 fpath = file.path(temp, activity)
-
-# load the dataframe
 activity <- read.csv("activity.csv", as.is=TRUE)
 ```
 

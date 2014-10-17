@@ -190,31 +190,15 @@ analysis</li>
 <p>Set the working directory then download and import the data from the .csv file.</p>
 
 <pre><code class="r">library(knitr)
-#knitr::opts_chunk$set(cache=FALSE)
-
 setwd(&quot;~/GitHub/Repro/RepData_PeerAssessment1&quot;)
-# fileurl is here
+
 fileurl &lt;- &quot;http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip&quot;
-
-# create a temporary directory
 temp = tempdir()
-
-# create the placeholder ready to receive
 acttemp = tempfile(tmpdir=temp, fileext=&quot;.zip&quot;)
-
-# download into the placeholder
 download.file(fileurl, acttemp, mode=&quot;wb&quot;)
-
-# get the name of the first file in the zip archive
 activity = unzip(acttemp, list=TRUE)$Name[1]
-
-# unzip the file to the temporary directory
 unzip(acttemp, files=activity, exdir=temp, overwrite=TRUE)
-
-# fpath is the full path to the extracted file
 fpath = file.path(temp, activity)
-
-# load the dataframe
 activity &lt;- read.csv(&quot;activity.csv&quot;, as.is=TRUE)
 </code></pre>
 
