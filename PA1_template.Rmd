@@ -5,7 +5,7 @@ output:
     keep_md: yes
   pdf_document: default
   word_document: default
-  <!-- rmarkdown v1 --> 
+  
 ---
 
 
