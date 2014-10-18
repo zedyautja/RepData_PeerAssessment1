@@ -22,12 +22,12 @@ library(knitr)
 setwd("~/GitHub/Repro/RepData_PeerAssessment1")
 
 fileurl <- "http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
-temp = tempdir()
-acttemp = tempfile(tmpdir=temp, fileext=".zip")
+temp <- tempdir()
+acttemp <- tempfile(tmpdir=temp, fileext=".zip")
 download.file(fileurl, acttemp, mode="wb")
-activity = unzip(acttemp, list=TRUE)$Name[1]
+activity <- unzip(acttemp, list=TRUE)$Name[1]
 unzip(acttemp, files=activity, exdir=temp, overwrite=TRUE)
-fpath = file.path(temp, activity)
+fpath <- file.path(temp, activity)
 activity <- read.csv("activity.csv", as.is=TRUE)
 ```
 
